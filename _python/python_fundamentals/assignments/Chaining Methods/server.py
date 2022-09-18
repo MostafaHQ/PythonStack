@@ -5,7 +5,7 @@ class User:
 
     def __init__(self, name, eamil):
         self.name = name
-        self.email = eamil
+        self.email = eamil 
         self.account_balance = 0
 
     def make_deposit(self, amount):
@@ -22,6 +22,8 @@ class User:
 
     def transfer_money(self, other_user, amount):
         self.account_balance -= amount
+        self.account_balance += amount
+
 
 
 guido = User("Guido van Rossum", "guido@python.com")

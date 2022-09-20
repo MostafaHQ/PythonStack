@@ -6,12 +6,12 @@ playground_app = Flask(__name__)
 
 @playground_app.route("/play")
 def play():
-    return render_template("Index1.html")
+    return render_template("Index3.html", num_box=3, color_box="blue")
 
 
 @playground_app.route("/play/<times>")
 def numbers_box(times):
-    return render_template("Index2.html", num_box=int(times))
+    return render_template("Index3.html", num_box=int(times), color_box="blue")
 
 
 @playground_app.route("/play/<times>/<color_cahnge>")

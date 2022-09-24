@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Users</title>
+  </head>
+  <body>
+    <h1 class="text-center">All the Users</h1>
+    <div class="container">
+      <table class="table">
+        <tr class="table-danger">
+          <th>Id</th>
+          <th>First Name</th>
+          <th>last Name</th>
+          <th>Email Address</th>
+          <th>Age</th>
+        </tr>
+        {% for user in my_users %}
+        <tr class="table-primary">
+          <td>{{user.id}}</td>
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.email_adress}}</td>
+          <td>{{user.age}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% csrf_token %}
+      <form action="/add_user" method="post">
+      <h1 class="text-center">Add a User</h1>
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="first_name" >First Name</label>
+              <input type="text" name="first_name" id="first_name" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+              <label for="last_name">Last Name</label>
+              <input type="text" name="last_name" id="last_name" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email" >Email</label>
+            <input type="text" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="age">Age</label>
+            <input type="text" name="age" id="age" class="form-control">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </body>
+</html>

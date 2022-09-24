@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 
 
@@ -6,6 +7,14 @@ def index(request):
 
 
 def show_result(request):
-    name_on_template = request.POST['name']
+    context = {
+        "name": request.POST['name'],
+        "location": request.POST['location'],
+        "language": request.POST['language'],
+        "comment": request.POST['comment'],
+    }
+    return render(request, 'result.html', context)
 
-    return render(request, 'result.html', name_on_template)
+
+# def show(request):
+#     return redirect(request, 'result.html')

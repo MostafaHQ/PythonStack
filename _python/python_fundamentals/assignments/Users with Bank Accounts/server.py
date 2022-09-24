@@ -53,7 +53,10 @@ monty = User("Monty Python", "monty@python.com")
 somebody = User("Somebody", "anybody@codingdojo.com")
 
 guido.make_deposit().make_withdrawal()
+monty.make_deposit().make_withdrawal()
+somebody.make_deposit().make_withdrawal()
+
 
 print(guido.display_user_balance())
-# print(monty.display_user_balance())
-# print(somebody.display_user_balance())
+print(monty.display_user_balance())
+print(somebody.display_user_balance())

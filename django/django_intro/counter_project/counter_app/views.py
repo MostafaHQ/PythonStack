@@ -12,5 +12,4 @@ def counter(request):
 
 def destroy(request):
     del request.session['count']
-
     return redirect('/')

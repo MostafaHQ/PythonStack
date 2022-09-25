@@ -18,9 +18,9 @@ def checkerBoardxy(x, y):
     return render_template("Index.html", x=int(x), y=int(y), color_one="black", color_two="red")
 
 
-# @app.route("/<x>/<y>/<color1>/<color2>")
-# def checkerBoardxyColoring(x, y, color1, color2):
-#     return render_template("Index.html", x=int(x), y=int(y), color_one=color1, color_two=color2)
+@app.route("/<x>/<y>/<color1>/<color2>")
+def checkerBoardxyColoring(x, y, color1, color2):
+    return render_template("Index.html", x=int(x), y=int(y), color_one=color1, color_two=color2)
 
 
 if __name__ == "__main__":

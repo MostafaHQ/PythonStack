@@ -18,6 +18,8 @@
       }
   </style>
   <body>
+    <form action="/guess" method="post">
+      {% csrf_token %}
     <h1>Welcome to the Great Number Game!</h1>
     <p>I am thinking of a number between 1 and 100</p>
     <p>Take a guess!</p>
@@ -26,5 +28,10 @@
     </div>
     <input type="number" name="number" id="number" />
     <button type="submit">Submit</button>
+    </form>
+    <form action="/reset" method="post">
+      {% csrf_token %}
+      <button type="submit">Reset</button>
+    </form>
   </body>
 </html>

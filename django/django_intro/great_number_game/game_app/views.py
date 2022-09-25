@@ -1,4 +1,5 @@
 from multiprocessing import context
+import re
 from django.shortcuts import render, redirect
 import random
 
@@ -30,3 +31,8 @@ def guess(request):
         }
 
     return render(request, 'results.html', context)
+
+
+def reset(request):
+    del request.session['random']
+    return redirect('/')

@@ -39,7 +39,7 @@ def add_author(request):
     return redirect('/author')
 
 
-def delete_book(request):
+def delete_author(request):
     c = Author.objects.get(id=(request.POST['author_id']))
     c.delete()
     return redirect('/author')

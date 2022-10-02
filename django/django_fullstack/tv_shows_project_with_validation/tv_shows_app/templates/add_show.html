@@ -13,7 +13,10 @@
     />
 </head>
 <body>
-    <h1>Add a New Show</h1>
+  <h1>Add a New Show</h1>
+  {% for message in messages %}
+    <p style="color:red">{{message}}</p>
+  {% endfor %}
     <form action="/shows/create/" method="POST">
         {% csrf_token %}
         <div>

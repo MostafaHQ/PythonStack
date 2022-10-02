@@ -1,6 +1,7 @@
 import re
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib import messages
 
 
 def show(request):
@@ -23,6 +24,11 @@ def add_new_show(request):
     network = request.POST['network']
     release_date = request.POST['release_date']
     description = request.POST['desc']
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for error in errors.values():
+            messages.error(request, error)
+        return redirect("/shows/new")
     c = Show.objects.create(title=title, network=network,
                             release_date=release_date, desc=description)
     return redirect(f'/shows/{c.id}/')
@@ -40,8 +46,10 @@ def back(request):
 
 
 def edit_show(request, id):
+    show = Show.objects.get(id=id)
+    show.release_date = show.release_date.strftime('%Y-%m-%d')
     context = {
-        'show': Show.objects.get(id=id),
+        'show': show
     }
     return render(request, 'edit_page.html', context)
 
@@ -52,7 +60,13 @@ def update_show(request, id):
     c.network = request.POST['network']
     c.release_date = request.POST['release_date']
     c.desc = request.POST['desc']
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for error in errors.values():
+            messages.error(request, error)
+        return redirect(f'/shows/{c.id}/edit')
     c.save()
+
     return redirect(f'/shows/{c.id}/')
 
 

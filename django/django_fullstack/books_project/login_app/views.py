@@ -1,3 +1,4 @@
+from contextlib import redirect_stderr
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
@@ -32,7 +33,7 @@ def welcome(request):
             context = {
                 'user': User.objects.get(id=request.session['id'])
             }
-        return redirect('/wall/')
+        return redirect('/books/')
     except:
         return redirect('/')
 
